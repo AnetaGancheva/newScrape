@@ -1,0 +1,35 @@
+.container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}
+
+.newsItem {
+    border: 5px inset darksalmon;
+}
+
+h3 {
+    color: yellow;
+    font-size: 30px;
+    text-align: center;
+    border: 5px outset darksalmon;
+    margin: 0;
+    font-weight: bold;
+}
+h6 {
+    color: green;
+    font-size: 22px;
+    text-align: center;
+    border: 3px double darksalmon;
+    margin: 0;
+}
+p{
+    color: red;
+    font-size: 30px;
+}
+body{
+    margin: 0;
+    padding: 0;
+    background-color: rgba(251, 131, 255, 0.616);
+}
+

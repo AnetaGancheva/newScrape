@@ -1,0 +1,12 @@
+html 
+  head 
+    style 
+      include ../css/style.css
+    title News 
+  body 
+    div(class = 'container')
+      each newsItem in newsItems
+        div(class = 'newsItem')
+          h3= newsItem.articleTitle 
+          h6= newsItem.articleDate 
+          p=  newsItem.articleText
