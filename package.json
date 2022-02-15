@@ -17,6 +17,7 @@
     "mongoose": "^6.1.8",
     "node-fetch": "^2.6.7",
     "pug": "^3.0.2",
+    "python-shell": "^3.0.1",
     "request": "^2.88.2",
     "sentiment": "^5.0.2",
     "vader-sentiment": "^1.1.3"
