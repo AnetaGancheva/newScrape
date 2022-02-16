@@ -8,6 +8,10 @@ html
       h1 You have successfully fetched some news!
       ul Now please navigate to:
         li ____________________________________________________________
-        li <em><strong>localhost:PORT/viewNews</strong></em>  to view only positive news ranked by positivity.
-        li <em><strong>localhost:PORT/getPythonNews</strong></em>  to add some news from the Python components to the database.
+        li 
+          button(class="nav-button-internal")
+            a(href="/getPythonNews") get news from Python components, sentiment evaluated, added to database.
+        li 
+          button(class="nav-button-internal")
+            a(href="/viewNews") view only very positive news ranked by positivity.
       

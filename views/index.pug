@@ -1,12 +1,37 @@
 html 
-  head 
-    style 
-      include ../css/style.css
+  head
+    block styles
+      link(rel="stylesheet" type="text/css" href="https://www.w3schools.com/w3css/4/w3.css")
+    style
+      include ../css/carousel.css
     title News 
-  body 
-    div(class = 'container')
+  body
+    div(class="go-home")
+      a(href="/") Home
+    div(class = 'w3-content w3-display-container')
       each newsItem in newsItems
-        div(class = 'newsItem')
-          h3= newsItem.articleTitle 
-          h6= newsItem.articleDate 
+        div(class = 'myNews w3-display-container')
+          h1= newsItem.articleTitle 
+          span(class="w3-tag w3-yellow")= newsItem.articleDate 
           p=  newsItem.articleText
+          button(class="w3-button w3-display-left w3-black", onclick="plusDivs(-1)") &#10094
+          button(class="w3-button w3-display-right w3-black", onclick="plusDivs(1)") &#10095
+
+    script. 
+      var slideIndex = 1;
+      showDivs(slideIndex);
+
+      function plusDivs(n) {
+        showDivs(slideIndex += n);
+      }
+
+      function showDivs(n) {
+        var i;
+        var x = document.getElementsByClassName("myNews");
+        if (n > x.length) {slideIndex = 1}
+        if (n < 1) {slideIndex = x.length}
+        for (i = 0; i < x.length; i++) {
+          x[i].style.display = "none";  
+        }
+        x[slideIndex-1].style.display = "block";  
+      }

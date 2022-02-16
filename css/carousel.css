@@ -1,0 +1,48 @@
+.w3-display-right{
+    right: 5% !important;
+    top: 10% !important;
+    position: fixed;
+}
+
+.w3-display-right:hover{
+    background-color: gold !important;
+}
+
+.w3-display-left{
+    left: 5% !important;
+    top: 10% !important;
+    position: fixed;
+}
+
+.w3-display-left:hover{
+    background-color: gold !important;
+}
+
+h1{
+    font-size: 22px !important;
+    font-weight: bold !important;
+    margin-bottom: 0 !important;
+}
+
+p{
+    text-align: justify;
+    font-size: 12px !important;
+}
+
+.go-home{
+    background-color: #333;
+    overflow: hidden;
+}
+
+.go-home a{
+    float: left;
+    color: #f2f2f2;
+    text-align: center;
+    padding: 10px 10px;
+    text-decoration: none;
+    font-size: 12px;
+}
+.go-home a:hover {
+    background-color: gold;
+    color: black;
+}

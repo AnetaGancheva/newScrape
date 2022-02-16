@@ -86,7 +86,7 @@ app.get('/getAPIResponse', (request, response) => {
 /**** When at Home page, render index.pug with the values of the most positive articles from DB. */
 
 app.get("/viewNews", (req, res)=>{
-    news.find({positivityScore: {$gt: 0}}, (err, newsItem) => {
+    news.find({positivityScore: {$gt: 30}}, (err, newsItem) => {
         if(!err) {
             const numArticles = newsItem.length;
             let newsArticles = [];
@@ -131,23 +131,14 @@ app.get('/getPythonNews', (req, res) => {
         // results is an array consisting of messages collected during execution
         let num = 0;
         for(let i =0; i<results.length; i+=4) {
-            console.log(results.length)
-            console.log(i)
             let newsPiece = new news();
             const title = results[i];
             newsPiece.title = title;
             /* day is not 03 but 3, so needs fix */
-            const regex = /^[A-Z][a-z]* [0-9], [0-9]*$/g;
-            const isDateOneNumber = regex.test(results[i+1]);
-            let date = "";
-            if(isDateOneNumber) {
-                date = "0".concat(results[i+1])
-            } else {
-                date = results[i+1]
-            }
+            const date = results[i+1];
             newsPiece.date = date;
             let newsText = "";
-            let j =0;
+            let j = 0;
             let counter = 0;
             for(j=i+3; j<results.length;j++) {
                 newsText += results[j-1];
@@ -157,7 +148,6 @@ app.get('/getPythonNews', (req, res) => {
                     break;
                 }
             }
-           console.log(j);
             if(j<=results.length-1) {i+=counter-2;}
             else{
                 for(let k=i+2;k<results.length;k++){

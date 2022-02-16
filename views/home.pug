@@ -2,14 +2,19 @@ html
   head 
     style 
       include ../css/style.css
-    title News 
+    title NewScrape 
   body 
     div(class = 'home-container')
       h1 Welcome to News Scraper
       ul Please navigate to:
         li ____________________________________________________________
-        li 1. <em><strong>localhost:PORT/getAPIResponse</strong></em> to get some articles from GNews and get their sentiment evaluated with a score between -10 and 10 and add them to database.
-        li 2.<em><strong>localhost:PORT/getPythonNews</strong></em>  to add some news from the Python components, sentiment evaluated, to the database.
-        br
-        li 3. <em><strong>localhost:PORT/viewNews</strong></em>  to view only positive news ranked by positivity
+        li 
+          button(class="nav-button-internal")
+            a(href="/getAPIResponse") get news from API components, sentiment evaluated, added to database
+        li 
+          button(class="nav-button-internal")
+            a(href="/getPythonNews") get news from Python components, sentiment evaluated, added to database.
+        li 
+          button(class="nav-button-internal")
+            a(href="/viewNews") view only very positive news ranked by positivity.
       
