@@ -2,15 +2,22 @@ html
   head 
     style 
       include ../css/style.css
+    block styles
+      link(rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css")
     title News 
-  body 
+  body
     div(class = 'home-container')
-      h1 You have successfully fetched some news from <strong><em>Python components</em></strong>!
-      ul Now please navigate to:
-        li ____________________________________________________________
-        li 
-          button(class="nav-button-internal")
-            a(href="/getAPIResponse") get news from API components, sentiment evaluated, added to database
-        li 
-          button(class="nav-button-internal")
-            a(href="/viewNews") view only very positive news ranked by positivity.
+      h1(class="page-title") You have successfully fetched some news from <strong><em>Python components</em></strong>!
+      div(class="ul-title") 
+        h1 Please navigate to:
+        <hr>
+      div
+        ul 
+          li 
+            span 
+              a(href="/getAPIResponse") get news from API components, sentiment evaluated, added to database
+            i(class="fa fa-angle-right") 
+          li 
+            span 
+              a(href="/viewNews") view only very positive news ranked by positivity.
+            i(class="fa fa-angle-right")

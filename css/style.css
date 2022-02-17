@@ -1,98 +1,88 @@
-.container {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-around;
-}
+.home-container {
+    width: 85%;
+    background:white;
+    box-shadow:2px 2px 2px 2px black ;
+    border-radius: 1%;
+  }
 
-.newsItem {
-    border: 5px inset darksalmon;
-}
+.home-container{
+    position:absolute;
+    top:50%;
+    left:50%;
+    transform: translate(-50%,-50%);
+  }
 
-h3 {
-    color: yellow;
-    font-size: 30px;
-    text-align: center;
-    border: 5px outset darksalmon;
-    margin: 0;
-    font-weight: bold;
-}
-h6 {
-    color: green;
-    font-size: 22px;
-    text-align: center;
-    border: 3px double darksalmon;
-    margin: 0;
-}
-p{
-    color: red;
-    font-size: 30px;
-}
-body{
-    margin: 0;
-    padding: 0;
-    /*background-color: rgba(251, 131, 255, 0.616);*/
-}
-
-h1 {
+.ul-title h1 {
+    padding: 5px 20px;
+    margin: 15px;
+    margin-bottom:1px;
     color: black;
-    font-size: 40px;
-    text-align: center;
-    border: 10px outset darksalmon;
-    margin: 0;
-    font-weight: bold;
-    background: linear-gradient(90deg, rgb(251, 255, 0) 0%, rgb(220, 255, 123) 47%, rgb(249, 255, 216) 100%);
+    font-weight: 1000;
+    font-size: 18px;
+    font-family: 'Shadows Into Light', cursive;
+  }
+
+.ul-title{
+     box-shadow: 0 3px 6px rgba(7, 0, 63, 0.25);
+  }
+
+body{
+    background-image: url(https://w0.peakpx.com/wallpaper/598/414/HD-wallpaper-brick-frame-old-paper-background-creative-frame-of-bricks-old-bricks-frame.jpg);
+    background-size: 100vw 100vh;
+    background-repeat: no-repeat;
 }
 
-ul {
-    color: white;
-    font-size: 30px;
-    font-weight: bold;
-    text-align: left;
-    margin: 0;
-    list-style-type: none;
-    padding-top: 1% !important;
-    background: linear-gradient(90deg, rgb(1, 109, 10) 0%, rgb(0, 177, 0) 47%, rgb(0, 255, 64) 100%);
-}
-
-ul li{
-    color: red;
-    font-size: 28 px;
-    text-align: left;
-    margin: 0;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-around;
-}
-
-.nav-button-internal{
+ul li {
     margin: 10px;
     padding: 15px 45px;
-    text-align: center;
+    text-align: left;
     text-transform: uppercase;
     transition: 0.5s;
     background-size: 200% auto;
     color: white;            
-    box-shadow: 0 0 20px #eee;
+    box-shadow: 0 0 20px whitesmoke;
     border-radius: 10px;
     display: block;
-    background-image: linear-gradient(to right, #FC354C 0%, #700202  51%, #FC354C  100%)
+    background-image: linear-gradient(to right, crimson 0%, whitesmoke  51%, crimson  100%)
+  }
+
+ul {
+    padding-left:10px;
+    margin-right:5px;
 }
 
-.nav-button-internal:hover a{
-    color: whitesmoke !important;
-
-}
-
-.nav-button-internal:hover{
+ul li:hover {
     background-position: right center; /* change the direction of the change here */
-    color: #fff;
     text-decoration: none;
 }
+  
 
-
-
-a{
-    text-decoration: none;
-    color: white;
+ul li i {
+    font-size: 20px;
     font-weight: bold;
+}
+
+.ul-title hr {
+    width: 20%;
+    margin-left:32px;
+    border: 2px solid crimson;
+  }
+
+.page-title {
+    width: 85%;
+    font-size: 24px;
+    margin-left:32px;
+    font-family: "Lucida Console", "Courier New", monospace !important;
+}
+
+span a{
+    text-decoration: none !important;
+    color:black;
+    font-weight: bold;
+    font-size: 16px;
+    font-family: "Lucida Console", "Courier New", monospace;
+}
+
+span a:hover{
+    color:rgb(187, 15, 50);
 }

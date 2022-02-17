@@ -1,21 +1,21 @@
 html 
   head
     block styles
-      link(rel="stylesheet" type="text/css" href="https://www.w3schools.com/w3css/4/w3.css")
+      link(rel="stylesheet" type="text/css" href="https://use.fontawesome.com/releases/v5.0.7/css/all.css")
     style
       include ../css/carousel.css
     title News 
   body
     div(class="go-home")
       a(href="/") Home
-    div(class = 'w3-content w3-display-container')
+    div(class = 'body-container display-container')
       each newsItem in newsItems
-        div(class = 'myNews w3-display-container')
+        div(class = 'my-news display-container')
           h1= newsItem.articleTitle 
-          span(class="w3-tag w3-yellow")= newsItem.articleDate 
-          p=  newsItem.articleText
-          button(class="w3-button w3-display-left w3-black", onclick="plusDivs(-1)") &#10094
-          button(class="w3-button w3-display-right w3-black", onclick="plusDivs(1)") &#10095
+          span(class="date-span")= newsItem.articleDate 
+          p(class="news-content")=  newsItem.articleText
+          button(class="display-left", onclick="plusDivs(-1)") &#x3c;
+          button(class="display-right", onclick="plusDivs(1)") &#x3e;
 
     script. 
       var slideIndex = 1;
@@ -27,7 +27,7 @@ html
 
       function showDivs(n) {
         var i;
-        var x = document.getElementsByClassName("myNews");
+        var x = document.getElementsByClassName("my-news");
         if (n > x.length) {slideIndex = 1}
         if (n < 1) {slideIndex = x.length}
         for (i = 0; i < x.length; i++) {

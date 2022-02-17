@@ -51,7 +51,6 @@ app.get('/getAPIResponse', (request, response) => {
             })
         .then((data) =>{
             const newsItems = [... data.articles];
-            console.log(newsItems.length);
             const numberOfNewsItems = newsItems.length;
             for(let i=0; i<numberOfNewsItems;i++) {
                 let title = newsItems[i].title;
@@ -74,7 +73,6 @@ app.get('/getAPIResponse', (request, response) => {
                 newsPiece.text = newsArticles[i].text;
                 let textTest = newsArticles[i].text;
                 let articleSentiment = sentiment.analyze(textTest);
-                console.log(articleSentiment.score);
                 newsPiece.positivityScore = articleSentiment.score;
                 newsPiece.save().then(() => console.log("News Item "+i+" has been added from API component."));
             }
@@ -106,7 +104,6 @@ app.get("/viewNews", (req, res)=>{
             newsArticles.sort( 
                 (a,b) => (a.score > b.score) ? -1 : 1
             );
-            console.log(newsArticles);
             res.render("index", {
                 newsItems: newsArticles
             });
@@ -144,7 +141,6 @@ app.get('/getPythonNews', (req, res) => {
                 newsText += results[j-1];
                 counter++;
                 if(/^[A-Z][a-z]* [0-9], [0-9]*$/.test(results[j+1]) || /^[A-Z][a-z]* [0-9][0-9], [0-9]*$/.test(results[j+1])){
-                    console.log(results[j+1]);
                     break;
                 }
             }
@@ -159,7 +155,6 @@ app.get('/getPythonNews', (req, res) => {
             let articleSentiment = sentiment.analyze(textTest);
             //console.log(articleSentiment.score);
             newsPiece.positivityScore = articleSentiment.score;
-            console.log(newsPiece);
             newsPiece.save().then(() => {num ++; console.log("News Item "+num+" has been added from Python component.")});
             
         }
