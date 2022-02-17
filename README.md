@@ -1,6 +1,6 @@
-# Back-end for Web Scraper
+# Web Scraper
 
-newScrape is the back-end framework for fetching and displaying articles from a database.
+newScrape is a framework for fetching and displaying articles from a database.
 
 ## Desription
 
