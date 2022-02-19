@@ -5,19 +5,18 @@ newScrape is a framework for fetching and displaying articles from a database.
 ## Desription
 
 Firstly, fork or copy the Github repo locally. Then run:
-``bash
+```bash
 npm install
-``
+```
 to install all necessary packages. 
 
 Then run the application:
-``bash
+```bash
 node index.js
-``
+```
 #### Please inquire further for database username and password (must add to .env file) and add PORT = <port>.
 
 ## About the application
-
 - Home page
 ![Home Page](img/17thFeb-Home.JPG)
 
@@ -48,5 +47,12 @@ positivityScore: Number
 
 - Node.js template engine of choice: Pugjs.
 
+### Demos
+
+![Select Menu Demo](img/newScrape-demo-part1.gif)
+
+
+![View News Demo](img/newScrape-demo-part2.gif)
+
 ## License
-[MIT](https://choosealicense.com/licenses/mit/)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
