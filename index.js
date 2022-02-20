@@ -1,3 +1,6 @@
+/********************************* */ 
+/* Imports */
+/********************************* */ 
 const express = require('express');
 const app = express();
 const mongoose = require('mongoose');
@@ -12,10 +15,16 @@ const {PythonShell} = require('python-shell');
 
 require('dotenv').config();
 
-/*** Use view engine pug */
+/********************************* */ 
+/* View Engine */
+/********************************* */ 
 
 app.set("view engine", "pug");
 app.set("views", path.join(__dirname, "views"));
+
+/********************************* */ 
+/* MongoDB connection and schema */
+/********************************* */ 
 
 /*** Establish connection to MONGO DB */
 
@@ -39,6 +48,10 @@ const newSchema = new mongoose.Schema({
 /*** Define model for news items */
 
 const news = mongoose.model('news', newSchema);
+
+/********************************* */ 
+/* GETs */
+/********************************* */ 
 
 /**** Get Articles from GNews API */
 
@@ -65,7 +78,6 @@ app.get('/getAPIResponse', (request, response) => {
             return newsArticles;
             })
         .then((newsArticles) => {
-            //console.log(newsArticles[0]);
             for(let i=0; i<newsArticles.length; i++){
                 let newsPiece = new news();
                 newsPiece.title = newsArticles[i].title;
@@ -81,7 +93,7 @@ app.get('/getAPIResponse', (request, response) => {
 });
 
 
-/**** When at Home page, render index.pug with the values of the most positive articles from DB. */
+/**** When at viewNews, render index.pug with the values of the most positive articles from DB. */
 
 app.get("/viewNews", (req, res)=>{
     news.find({positivityScore: {$gt: 30}}, (err, newsItem) => {
@@ -114,7 +126,7 @@ app.get("/viewNews", (req, res)=>{
     })
 });
 
-/* Get articles from Python components */
+/* Get articles from Python component */
 
 app.get('/getPythonNews', (req, res) => {
     
@@ -126,7 +138,6 @@ app.get('/getPythonNews', (req, res) => {
     PythonShell.run('ParserV1.py', options, function (err, results) {
         
         if (err) throw err;
-        // results is an array consisting of messages collected during execution
         Promise.resolve()
         .then(() => {
             let num = 0;
@@ -184,7 +195,10 @@ app.listen(process.env.PORT, () => console.log("Listening to port."));
 
 
 
-/**** TEST NEWS ARTICLES */
+/********************************* */ 
+/* Test News Cases */
+/********************************* */ 
+
 /**** These have been created for testing purposes only - to test connection to DB and filtering. */
 /**** Sample articles with sample scores force saved to DB and fetched from there after. */
 /*
