@@ -117,6 +117,7 @@ app.get("/viewNews", (req, res)=>{
 /* Get articles from Python components */
 
 app.get('/getPythonNews', (req, res) => {
+    
     let options = {
         mode: 'text',
         args: [['title', 'date', 'textParsed']]
@@ -126,40 +127,42 @@ app.get('/getPythonNews', (req, res) => {
         
         if (err) throw err;
         // results is an array consisting of messages collected during execution
-        let num = 0;
-        for(let i =0; i<results.length; i+=4) {
-            let newsPiece = new news();
-            const title = results[i];
-            newsPiece.title = title;
-            /* day is not 03 but 3, so needs fix */
-            const date = results[i+1];
-            newsPiece.date = date;
-            let newsText = "";
-            let j = 0;
-            let counter = 0;
-            for(j=i+3; j<results.length;j++) {
-                newsText += results[j-1];
-                counter++;
-                if(/^[A-Z][a-z]* [0-9], [0-9]*$/.test(results[j+1]) || /^[A-Z][a-z]* [0-9][0-9], [0-9]*$/.test(results[j+1])){
-                    break;
+        Promise.resolve()
+        .then(() => {
+            let num = 0;
+            for(let i =0; i<results.length; i+=4) {
+                let newsPiece = new news();
+                const title = results[i];
+                newsPiece.title = title;
+                const date = results[i+1];
+                newsPiece.date = date;
+                let newsText = "";
+                let j = 0;
+                let counter = 0;
+                for(j=i+3; j<results.length;j++) {
+                    newsText += results[j-1];
+                    counter++;
+                    if(/^[A-Z][a-z]* [0-9], [0-9]*$/.test(results[j+1]) || /^[A-Z][a-z]* [0-9][0-9], [0-9]*$/.test(results[j+1])){
+                        break;
+                    }
                 }
-            }
-            if(j<=results.length-1) {i+=counter-2;}
-            else{
-                for(let k=i+2;k<results.length;k++){
-                    newsText+=results[k];
+                if(j<=results.length-1) {i+=counter-2;}
+                else{
+                    for(let k=i+2;k<results.length;k++){
+                        newsText+=results[k];
+                    }
                 }
+                newsPiece.text = newsText;
+                let textTest = newsText;
+                let articleSentiment = sentiment.analyze(textTest);
+                newsPiece.positivityScore = articleSentiment.score;
+                newsPiece.save().then(() => {num ++; console.log("News Item "+num+" has been added from Python component.")});  
             }
-            newsPiece.text = newsText;
-            let textTest = newsText;
-            let articleSentiment = sentiment.analyze(textTest);
-            //console.log(articleSentiment.score);
-            newsPiece.positivityScore = articleSentiment.score;
-            newsPiece.save().then(() => {num ++; console.log("News Item "+num+" has been added from Python component.")});
-            
-        }
-    });
-    res.render("python");
+        })
+        .then(()=> {
+            res.render("python");
+        });
+    })
 })
 
 /*** HOME PAGE  */
